@@ -1,14 +1,18 @@
+class UI {
+  static calculateBMR() {
+    const menMultiplier = 11;
 
-document.querySelector("#calcBtn").addEventListener('click',()=>{
-    let weight =parseInt(document.querySelector('#weight').value),
-    hourlySpan = document.querySelector('#hourlyBMR'),
-    dailySpan = document.querySelector('#dailyBMR'),
-    hourlyBMR,
-    dailyBMR;
+    let weight = parseInt(document.querySelector("#weight").value),
+      hourlySpan = document.querySelector("#hourlyBMR"),
+      dailySpan = document.querySelector("#dailyBMR"),
+      hourlyBMR = (weight * menMultiplier) / 24,
+      dailyBMR = weight * menMultiplier;
 
-    const menMult = 11;
+    hourlySpan.innerHTML = `Hourly Calories Expened: ${hourlyBMR.toFixed(2)}`;
 
-    hourlySpan.innerHTML = `Hourly Calories Expened: ${(weight * menMult / 24).toFixed(2)}`;
-    dailySpan.innerHTML = `Daily Calories Expended: ${weight * menMult}`;
+    dailySpan.innerHTML = `Daily Calories Expended: ${dailyBMR}`;
+    
+  }
+}
 
-});
+document.querySelector("#calcBtn").addEventListener("click", UI.calculateBMR);
